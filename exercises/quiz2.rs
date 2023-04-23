@@ -30,15 +30,15 @@ mod my_module {
     use super::Command;
 
     // TODO: Complete the function signature!
-    pub fn transformer(input: Vec<(&str, Command)>) -> Vec<&str> {
+    pub fn transformer(input: Vec<(String, Command)>) -> Vec<String> {
         // TODO: Complete the output declaration!
-        let mut output: Vec<&str> = vec![];
+        let mut output: Vec<String> = vec![];
         for (string, command) in input.iter() {
             // TODO: Complete the function body. You can do it!
             match command {
-                Command::Append(n) => output.push("something"),
-                Command::Trim => output.push(string.trim()),
-                Command::Uppercase => output.push(string.to_uppercase().clone().as_str()),
+                Command::Append(n) => output.push(string.to_owned() + &"bar".repeat(*n)),
+                Command::Trim => output.push(string.trim().to_string()),
+                Command::Uppercase => output.push(string.to_uppercase())
             }
         }
         output
